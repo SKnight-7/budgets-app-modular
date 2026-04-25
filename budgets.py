@@ -168,10 +168,10 @@ class BudgetManager:
             ValueError: If any key in income_by_category is not a string or any value is not a number.
         """
         if not isinstance(income_by_category, dict):
-            raise TypeError("expenditures_by_category must be a dictionary")
+            raise TypeError("income_by_category must be a dictionary")
         if not all(isinstance(k, str) and isinstance(v, (int, float)) for k, v in income_by_category.items()):
             raise ValueError(
-                "All keys in expenditures_by_category must be strings and all values must be numbers")
+                "All keys in income_by_category must be strings and all values must be numbers")
         self._income_by_category = income_by_category
 
     def __str__(self):
@@ -472,7 +472,7 @@ class TransactionsManager:
         if not isinstance(transactions, dict):
             raise TypeError("Collection of transactions must be a dictionary")
         if not all(isinstance(transaction, Transaction) for transaction in transactions.values()):
-            raise ValueError("All values in budget_categories must be BudgetCategory instances")
+            raise ValueError("All values in transactions must be Transaction instances")
         self._transactions = transactions
 
     def __str__(self):
