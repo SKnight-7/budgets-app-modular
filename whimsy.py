@@ -1,3 +1,10 @@
+"""
+Whimsy module — a small launch flourish for the app.
+
+Provides an ASCII-art (FIGlet) title and a cowsay greeting that display once
+when the app starts. It's pure character/UX, not functionality, but adds a bit
+of warmth to what would otherwise be a cold CLI startup.
+"""
 from pyfiglet import Figlet, FigletError
 import cowsay
 
@@ -33,9 +40,8 @@ def generate_cow(phrase):
 
 def apply_whimsy(enable_whimsy=True):
     if enable_whimsy:
-        title1 = generate_figlet('CS50\nFinal Project :', 'standard')
-        title2 = generate_figlet('Budgets App', 'banner')
-        cowified = generate_cow('Welcome to my project!')
-        return f'\n\n\n\n{title1}\n\n{title2}\n{cowified}'
+        title = generate_figlet('Budgets App', 'banner')
+        cowified = generate_cow('Let\'s see how these finances are moooooving!')
+        return f'\n\n\n\n{title}\n{cowified}'
     else:
         return "Welcome to the Budgets App"
