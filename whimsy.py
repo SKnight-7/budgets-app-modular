@@ -5,8 +5,18 @@ Provides an ASCII-art (FIGlet) title and a cowsay greeting that display once
 when the app starts. It's pure character/UX, not functionality, but adds a bit
 of warmth to what would otherwise be a cold CLI startup.
 """
+import random
+
 from pyfiglet import Figlet, FigletError
 import cowsay
+
+COW_PHRASES = [
+    "Let's see how these finances are moooooving!",
+    "Time to mooooove some numbers around!",
+    "Holy cow, let's see those numbers!",
+    "I 'herd' you've got finances to explore. Let's mooooove!",
+    "I'm 'udderly' excited to explore these budgets!",
+]
 
 def generate_figlet(phrase, user_font):
     """
@@ -41,7 +51,7 @@ def generate_cow(phrase):
 def apply_whimsy(enable_whimsy=True):
     if enable_whimsy:
         title = generate_figlet('Budgets App', 'banner')
-        cowified = generate_cow('Let\'s see how these finances are moooooving!')
+        cowified = generate_cow(random.choice(COW_PHRASES))
         return f'\n\n\n\n{title}\n{cowified}'
     else:
         return "Welcome to the Budgets App"
