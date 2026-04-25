@@ -14,7 +14,7 @@ COW_PHRASES = [
     "Let's see how these finances are moooooving!",
     "Time to mooooove some numbers around!",
     "Holy cow, let's see those numbers!",
-    "I 'herd' you've got finances to explore. Let's mooooove!",
+    "I 'herd' you have finances to explore!",
     "I'm 'udderly' excited to explore these budgets!",
 ]
 
