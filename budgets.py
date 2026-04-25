@@ -260,7 +260,7 @@ class BudgetManager:
             ui.display_budget_menu(f"{self.budget_menu}\n\nPlease select a budget to update. To delete a budget, please update the budgeted amount to 0")
             # Gets the key in the self.budget_categories dictionary
             category_to_update = self.get_budget_category_to_update()
-            if not category_to_update:
+            if category_to_update is None:
                 # Let the user know their selection was invalid before reprompting
                 ui.display_error("Invalid option, please try again.")
                 continue
@@ -268,7 +268,7 @@ class BudgetManager:
                 return 'q'  # Lets calling function know user wants to quit out of budget menu
             while True:
                 new_budget_amt = self.get_new_budget_amt(category_to_update)
-                if not new_budget_amt:
+                if new_budget_amt is None:
                     ui.display_error('Invalid entry')
                     continue  # Let user try entering the budget amount again, in case they just used the wrong format or miskeyed the input
                 if new_budget_amt == 'q':   # If user enters 'q' instead of an amount, they may have meant to choose a different category
@@ -751,7 +751,7 @@ class FinancialController:
             ui.display_transactions(self.transactions_manager.formatted_transactions(sort_order))
             # Gets and validates transaction number
             transaction_to_update = self.transactions_manager.get_transaction_to_update()
-            if not transaction_to_update:
+            if transaction_to_update is None:
                 # Let the user know their selection was invalid before reprompting
                 ui.display_error("Invalid transaction number. Please try again.")
                 continue
@@ -760,7 +760,7 @@ class FinancialController:
             while True:
                 ui.display_budget_menu(self.budget_manager.budget_menu)
                 new_category = self.budget_manager.get_budget_category_to_update()
-                if not new_category:
+                if new_category is None:
                     ui.display_error('Please select from the available categories')
                     continue  # Let user try entering the category again, in case they just miskeyed the input
                 if new_category == 'q':   # If user enters 'q' instead of an amount, they may have meant to choose a different transaction
