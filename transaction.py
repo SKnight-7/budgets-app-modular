@@ -61,13 +61,15 @@ class Transaction:
     @amount.setter
     def amount(self, amount: str):
         """
-        Setter method for the amount attribute. Transforms a string to a float and ensures the input is non-negative.
+        Setter method for the amount attribute. Transforms a string to a float, rounded to 2 decimal places.
+        Negative values are valid and represent expenses (matching how bank CSVs format outflows);
+        positive values represent income.
 
         Args:
             amount (str): The amount to set for the transaction.
 
         Raises:
-            ValueError: If the provided amount is negative or cannot be cast to a float.
+            ValueError: If the provided amount cannot be cast to a float.
         """
         try:
             amount = round(float(amount), 2)
