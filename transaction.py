@@ -31,9 +31,9 @@ class Transaction:
         try:
             transaction_num = int(transaction_num)
             if transaction_num < 0:
-                raise ValueError('Transaction number must be non-negative')
+                raise ValueError
         except ValueError:
-            raise ValueError('Transaction number must be an integer')
+            raise ValueError('Transaction number must be a positive integer')
         self._transaction_num = transaction_num
 
     @property

@@ -96,9 +96,9 @@ class BudgetCategory:
         try:
             option_num = int(option_num)
             if option_num < 0:
-                raise ValueError('Option number must be non-negative')
+                raise ValueError
         except ValueError:
-            raise ValueError('Option number must be an integer')
+            raise ValueError('Option number must be a positive integer')
         self._option_num = option_num
 
     @property
@@ -125,10 +125,10 @@ class BudgetCategory:
         try:
             amt_budgeted = round(float(amt_budgeted), 2)
             if amt_budgeted < 0:
-                raise ValueError('Budgeted amount must be non-negative')
+                raise ValueError
         except ValueError:
             raise ValueError(
-                'Must be a dollar amount without a currency symbol (ex: 25.75, not $25.75)')
+                'Must be a non-negative dollar amount without a currency symbol (ex: 25.75, not $25.75)')
         self._amt_budgeted = amt_budgeted
 
     @property
@@ -155,7 +155,7 @@ class BudgetCategory:
         try:
             search_order = int(search_order)
             if search_order < 0:
-                raise ValueError('Search order must be non-negative')
+                raise ValueError
         except ValueError:
-            raise ValueError('Search order must be an integer')
+            raise ValueError('Search order must be a positive integer')
         self._search_order = search_order
