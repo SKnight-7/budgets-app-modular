@@ -384,16 +384,19 @@ class TransactionsManager:
         # Dictionary with BudgetCategory objects as values, and their budget_category attribute as keys
         self.transactions = self.make_transactions_dictionary()
 
-    def make_transactions_dictionary(self, transaction_objects=[Transaction('0', '1900-01-01', '0', 'Sample', 'Uncategorized', 'sample.csv')]):
+    def make_transactions_dictionary(self, transaction_objects=None):
         """
         Creates a dictionary mapping transaction numbers to Transaction objects.
 
         Args:
-            transaction_objects (list): List of Transaction objects (default: [Transaction('0', '1900-01-01', '0', 'Sample', 'Uncategorized', 'sample.csv')]).
+            transaction_objects (list, optional): List of Transaction objects. If omitted,
+                defaults to a single placeholder sample Transaction.
 
         Returns:
             dict: Dictionary mapping transaction numbers to Transaction objects.
         """
+        if transaction_objects is None:
+            transaction_objects = [Transaction('0', '1900-01-01', '0', 'Sample', 'Uncategorized', 'sample.csv')]
         self.transaction_objects = transaction_objects
         return {transaction_obj.transaction_num: transaction_obj for transaction_obj in self.transaction_objects}
 
