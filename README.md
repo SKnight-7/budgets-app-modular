@@ -45,7 +45,7 @@ The app currently expects Wells Fargo's CSV export format: no headers, with colu
 ├── categorizer.py         # Pure function for matching descriptions to categories
 ├── menus.py               # Menu rendering helpers
 ├── ui.py                  # Display and input helpers, isolated from business logic
-├── whimsy.py              # Launch flourish — figlet title + randomized cowsay greeting
+├── whimsy.py              # Launch flourish: figlet title + randomized cowsay greeting
 ├── csv/                   # Sample CSVs and runtime state files
 ├── tests/                 # Pytest test suite for the categorizer
 └── conftest.py            # Pytest configuration
@@ -56,7 +56,7 @@ The application uses a layered design:
 - **Data classes** (`Transaction`, `BudgetCategory`) hold values with validation enforced at the property setters, so invalid inputs are caught at the boundary rather than producing bad state downstream.
 - **Manager classes** (`BudgetManager`, `TransactionsManager`) handle persistence and the domain logic for their respective concerns.
 - **Controller** (`FinancialController`) orchestrates between the managers; the `main()` loop only ever interacts with this class, never reaching into the managers directly.
-- **Presentation** (`ui.py`, `menus.py`, `whimsy.py`) is isolated from business logic, so the same data could be presented through a different interface — a web app, a GUI, anything — without changing the core code.
+- **Presentation** (`ui.py`, `menus.py`, `whimsy.py`) is isolated from business logic, so the same data could be presented through a different interface (a web app, a GUI, anything) without changing the core code.
 
 ## The categorizer's search_order mechanism
 
@@ -82,6 +82,6 @@ run from the project root. Nine tests cover the categorizer's behavior, includin
 
 ## Background
 
-This project began as the final project for [Harvard's CS50P](https://cs50.harvard.edu/python/) in early 2024. The original submission already had the class architecture above (manager/controller separation, validating property setters, the search_order mechanism for categorization), but everything lived in a single ~1,300-line file. I subsequently refactored it into the modular structure shown — one module per concern, extracting `categorize_item` from a method into a standalone pure function, adding a `ui` abstraction layer so the managers no longer call `print()` directly, and grouping the launch flourish into its own `whimsy` module.
+This project began as the final project for [Harvard's CS50P](https://cs50.harvard.edu/python/) in early 2024. The original submission already had the class architecture above (manager/controller separation, validating property setters, the search_order mechanism for categorization), but everything lived in a single ~1,300-line file. I subsequently refactored it into the modular structure shown above. The refactor split the code into one module per concern, extracted `categorize_item` from a method into a standalone pure function, added a `ui` abstraction layer so the managers no longer call `print()` directly, and grouped the launch flourish into its own `whimsy` module.
 
-Development was eventually paused. The next logical step — improving the categorizer with LLM-based matching — would have required either an external API call (inappropriate for sensitive financial data) or self-hosting a local model (out of scope for what was meant to be a learning project). Stopping at this point felt like the right call: it leaves a self-contained, working application with cleanly demonstrable design choices, rather than an incomplete attempt at a different architecture.
+Development was eventually paused. The next logical step (improving the categorizer with LLM-based matching) would have required either an external API call, which is inappropriate for sensitive financial data, or self-hosting a local model, which was out of scope for what was meant to be a learning project. Stopping at this point felt like the right call: it leaves a self-contained, working application with cleanly demonstrable design choices, rather than an incomplete attempt at a different architecture.
