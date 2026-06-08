@@ -71,7 +71,7 @@ def get_default_categories():
         BudgetCategory('Shopping', 'Other Shopping',
                         'amazon|amzn|ebay|macy|nordstrom|target|walmart|outlet|google', '16', '0', '999'),
         BudgetCategory('Other', 'Self Care',
-                        'spa | hair|nail|salon|barber|massage|beauty', '17', '0', '17'),
+                        'spa | hair|nail|salon|barber|massage|beauty', '17', '0', '16'),
         BudgetCategory('Other', 'Pet Care',
                         'chewy|animal|vet|kitty|cat |dog|hound|pup', '18', '0', '12'),
         BudgetCategory('Other', 'Laundry', 'csc', '19', '0', '19'),
