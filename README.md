@@ -2,6 +2,10 @@
 
 A modular Python CLI application for tracking personal budgets and categorizing bank transactions from CSV exports.
 
+![The Budgets App launch screen: a figlet "BUDGETS" banner, a cowsay cow announcing "I 'herd' you have finances to explore!", and the main menu](screenshots/on_open.png)
+
+*Launch screen. The `whimsy` module renders a figlet banner and a randomized cowsay greeting above the main menu.*
+
 ## What it does
 
 Read a CSV export of your bank transactions, automatically categorize each transaction by keyword (Groceries, Eating Out, Utilities, etc.), and compare actual expenditures against budgeted amounts you've set per category. Income and expense breakdowns are displayed as formatted tables; transactions that don't match any keyword are flagged as "Uncategorized" so you can recategorize them manually through the menu.
@@ -14,6 +18,10 @@ The full feature set:
 - View transactions sorted by category, transaction number, or date
 - Manually recategorize individual transactions
 - Persist budget and transaction state across sessions in internally-managed CSV files
+
+![The budgets view: an income table with Expected, Received, and Pending columns, and a budget table with Budgeted, Expended, and Remaining columns, the over-budget Utilities row in red, followed by the full category reference](screenshots/budgets_view.png)
+
+*The budgets view. Expected vs. received income up top, then budgeted vs. expended vs. remaining per category, with over-budget categories flagged in red (here, Utilities at -35.20). Spending that matches no keyword is surfaced as a single Uncategorized total, so nothing is silently dropped.*
 
 ## A note on the data
 
@@ -69,6 +77,10 @@ This matters because real bank descriptions frequently contain keywords from mul
 | `ANIMAL HOSPITAL EMERGENCY` | Pet Care (`animal`), Medical (`hospital`) | Pet Care has search_order 12, Medical has 17 |
 | `GROCERY OUTLET 0987` | Groceries (`grocery`), Other Shopping (`outlet`) | Groceries has search_order 7, Other Shopping has 999 |
 | `AMAZON PRIME VIDEO` | Entertainment (`video`), Other Shopping (`amazon`) | Entertainment has search_order 20, Other Shopping has 999 |
+
+![Transactions sorted by category, showing ANIMAL HOSPITAL EMERGENCY categorized as Pet Care, GROCERY OUTLET as Groceries, AMAZON PRIME VIDEO as Entertainment, and an unmatched check as Uncategorized](screenshots/transactions_by_category.png)
+
+*The same edge cases resolved live: `ANIMAL HOSPITAL EMERGENCY` lands in Pet Care, `GROCERY OUTLET` in Groceries, `AMAZON PRIME VIDEO` in Entertainment, and an unmatched `CHECK # 1001` falls through to Uncategorized.*
 
 These cases are covered by the test suite as a readable specification.
 
