@@ -19,9 +19,9 @@ The full feature set:
 - Manually recategorize individual transactions
 - Persist budget and transaction state across sessions in internally-managed CSV files
 
-![The budgets view: an income table with Expected, Received, and Pending columns, and a budget table with Budgeted, Expended, and Remaining columns, the over-budget Utilities row in red, followed by the full category reference](screenshots/budgets_view.png)
+![The budgets view: an income table with Expected, Received, and Pending columns, and a budget table with Budgeted, Expended, and Remaining columns, the over-budget Utilities row showing a negative remaining amount, followed by the full category reference](screenshots/budgets_view.png)
 
-*The budgets view. Expected vs. received income up top, then budgeted vs. expended vs. remaining per category, with over-budget categories flagged in red (here, Utilities at -35.20). Spending that matches no keyword is surfaced as a single Uncategorized total, so nothing is silently dropped.*
+*The budgets view. Expected vs. received income up top, then budgeted vs. expended vs. remaining per category, with over-budget categories showing a negative remaining amount (here, Utilities at -35.20). Spending that matches no keyword is surfaced as a single Uncategorized total, so nothing is silently dropped.*
 
 ## A note on the data
 
